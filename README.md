@@ -10,16 +10,16 @@ Demo:
 Take a look at our demo video here! In our demo, we focus on the ___.
 
 Stepup Instructions:
-
-      o.    Clone the repository
       
-      1.    Run npm install: this will install all the dependencies needed for this project
+      1.    Clone the repository
       
-      2.    Run npm start
+      2.    Run npm install: this will install all the dependencies needed for this project
       
-      3.    On your browser, navigate to the webpage localhost:4000/ //maybe change port
+      3.    Run npm start
       
-      4.    CONTROL+C will kill the server when you are finished
+      4.    On your browser, navigate to the webpage localhost:4000/ //maybe change port
+      
+      5.    CONTROL+C will kill the server when you are finished
       
 
 Team Management:
