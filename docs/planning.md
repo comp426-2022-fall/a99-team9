@@ -14,6 +14,7 @@
 -The days that you have completed your water goal will turn blue on the calendar.
 
 
+
 #### Potential Names:
 -Dam Journal
 
@@ -22,3 +23,11 @@
 -Drip or Drown
 
 -Fo' drizzle
+_________________
+
+#### 11/30 Begin work
+-Created repo and started documentation, created directories to place documentation and styling, looking into different uses for apis and which would best suit our project
+
+-Created package.json file but need to begin to build out server.js file and think about the design elements on the front end
+
+
