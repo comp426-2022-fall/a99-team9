@@ -1,0 +1,29 @@
+{
+  "name": "a99-team9",
+  "version": "1.0.0",
+  "description": "Creating a water tracker called Dam Journal as our 426 Final Project",
+  "main": "server.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "node server.js --port=4000"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/comp426-2022-fall/a99-team9.git"
+  },
+  "keywords": [
+    "server",
+    "node",
+    "web",
+    "args",
+    "port"
+  ],
+  "author": "",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/comp426-2022-fall/a99-team9/issues"
+  },
+  "homepage": "https://github.com/comp426-2022-fall/a99-team9#readme"
+}
