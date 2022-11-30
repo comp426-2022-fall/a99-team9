@@ -23,8 +23,8 @@ Stepup Instructions:
       
 
 Team Management:
-Review Manager : Megan
 
+Review Manager : Megan
     A review manager reviews pull requests from group members and will merge or reject them from the project. They will also manage the discussion of the project. 
 
 Plan Manager: Everyone
@@ -33,7 +33,6 @@ Plan Manager: Everyone
 
 
 Documentation Manager: Tuna
-
     Then documentation manager ensures that all documentation and write-ups are made in a manner that is well accounted for and each component of the project has a description. They will also maintain the readme file for the project. 
 
 
