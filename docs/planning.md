@@ -13,6 +13,10 @@
 
 -The days that you have completed your water goal will turn blue on the calendar.
 
+-Give users the ability to register an account, update their information, see their information somewhere, and delete their account.
+
+-README.md file with basic descriptiong, installation requirements/instructions, dependency list, run instructions
+
 
 
 #### Potential Names:
