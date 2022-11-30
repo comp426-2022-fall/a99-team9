@@ -1,5 +1,6 @@
 # a99-team9
 Team 9's final project:
+
 Dam Journal 
 
 Summary:
@@ -26,9 +27,11 @@ Documentation Manager: Tuna
     Then documentation manager ensures that all documentation and write-ups are made in a manner that is well accounted for and each component of the project has a description. They will also maintain the readme file for the project. 
 
 Release Manager: Megan
+
       The release manager will oversee the packaging and release process for the project package. 
 
 Front End Lead: Katie
+
       Design and putting together the face of the website to make sure that it works well for the user and looks nice. 
 
 Back End Lead: Megan
