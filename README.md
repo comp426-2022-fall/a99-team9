@@ -11,7 +11,7 @@ Take a look at our demo video here! In our demo, we focus on the ___.
 
 Stepup Instructions:
 
-      0.    Clone the repository
+      o.    Clone the repository
       
       1.    Run npm install: this will install all the dependencies needed for this project
       
