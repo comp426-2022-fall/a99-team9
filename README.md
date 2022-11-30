@@ -1,15 +1,15 @@
 # a99-team9
 Team 9's final project:
 
-#Dam Journal 
+# Dam Journal 
 
-##Summary:
+## Summary:
 Dam Journal is a water tracker that allow users to keep track of how much water they drank throughout the day so that they can achieve their water consumption goals. Users will create an account where they can add how many fluid ounces they just drank. They can also see how much water they drank throughout the day along with how much water they drank in any previous day. We hope to promote drinking water because it is refreshing, delicious, and has health benefits. 
 
-##Demo:
+## Demo:
 Take a look at our demo video here! In our demo, we focus on the ___.
 
-##Stepup Instructions:
+## Stepup Instructions:
       
       1.    Clone the repository
       
@@ -22,7 +22,7 @@ Take a look at our demo video here! In our demo, we focus on the ___.
       5.    CONTROL+C will kill the server when you are finished
       
 
-##Team Management:
+## Team Management:
 
 Review Manager : Megan
 
@@ -67,8 +67,9 @@ Responsible for working with the back-end lead to ensure the database of account
 __________________________
 
 
-##Components: 
+## Components: 
 
 Username
 
 Password
+
