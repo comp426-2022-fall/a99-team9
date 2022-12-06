@@ -25,5 +25,11 @@
   "bugs": {
     "url": "https://github.com/comp426-2022-fall/a99-team9/issues"
   },
-  "homepage": "https://github.com/comp426-2022-fall/a99-team9#readme"
+  "homepage": "https://github.com/comp426-2022-fall/a99-team9#readme",
+  "type": "module",
+  "dependencies": {
+    "express": "^4.18.2",
+    "minimist": "^1.2.7",
+    "npm": "^9.1.2"
+  }
 }
