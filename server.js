@@ -7,7 +7,7 @@ import Database from 'better-sqlite3';
 const db = new Database('userinfo.db');
 db.pragma('journal_mode = WAL'); 
 
-const UserTable = `CREATE TABLE userinfo (id INTEGER PRIMARY KEY AUTOINCREMENT, Name VARCGHAR(50), Username VARCHAR(50), Password VARCHAR(50), WaterGoal INTEGER);'
+const UserTable = `CREATE TABLE userinfo (id INTEGER PRIMARY KEY AUTOINCREMENT, Name VARCGHAR(50), Username VARCHAR(50), Password VARCHAR(50), WaterGoal INTEGER);`
 try{
     db.exec(UserTable);
 }catch (error){
