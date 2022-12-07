@@ -58,6 +58,22 @@ app.post("/login", function(req, res){
 
 }
 });
+
+// Delete an account
+app.post('/delete_acc', function(req, res){
+    const time = Date.now();
+    const now = new Date(time); 
+    let user1 = req.body.username
+    
+    const stmt1 = `INSERT INTO Logs (user, message, time) VALUES ('${username}', ' deleted account', '$now.ISOString()}');`;
+    db.exec(stmt1)
+
+    const usernam = req.body.username;
+    const pass = req.body.password;
+    const stmt1 = `DELETE FROM userinfo WHERE Username =' ${usernam}';`
+    db.exec(stmt1)
+    res.render('acc_delted');
+});
  
 
 // Creating a new account
