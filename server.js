@@ -22,7 +22,7 @@ const saltRounds = 12;
  
 const port = args.port || 2000  
 //app.use
-app.use(express.static("front"))
+app.use(express.static("frontend"))
 app.set("view engine", "ejs") 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -47,12 +47,12 @@ app.post("/login", function(req, res){
     const now = new Date(time); 
     const check = dp.prepare(`SELECT * FROM userinfo WHERE Username =' ${username}' and password='${pass}';`);
     let x = check.get();
-    if(row === undefined){
-	const unsuccessful = `INSERT INTO Logs (user, message, time ) VALUES ('${usernmae}', 'unsuccessful login', '${today.toISOString()}');`;
+    if(x === undefined){
+	const unsuccessful = `INSERT INTO Logs (user, message, time ) VALUES ('${usernmae}', 'unsuccessful login', '${now.toISOString()}');`;
 	db.exec(unsucessful);
         res.render('invalid-login');
     }else{
-        const success = `INSERT INTO Logs (user, message, time) VALUES ('${username}', 'success!', ${today.toISOString()}');`; 
+        const success = `INSERT INTO Logs (user, message, time) VALUES ('${username}', 'success!', ${now.toISOString()}');`; 
         db.exec(success)
         res.render('home');  	
 
@@ -67,13 +67,20 @@ app.post('/new', (req, res, next) => {
 	username: req.body.username,
 	password: req.body.password,
 	watergoal: req.body.watergoal
-     }
-     const stmt = dp.prepare('INSERT INTO userinfo (name, username, password, watergoal) VALUES (?, ?, ?, ?)');
-   // FIGURE OUT HOW TO USE BCRYPT  
-     const info = stmt.run(userdata.name, userdata.username, userdata.password, userdata.watergoal);
-     res.status(200).json({'message": "user " + userdata.username " +  " created"})
-     console.log(userdata)
-     console.log(info) 
+    }
+    const time = Date.now();
+    const now = new Date(time);
+    cons stmt1 = db.prepare(`SELECT * FROM userinfo WHERE Username =' ${username}';`);
+    let y = stmt1.get();
+    if(y == undefined){
+	const new = `INSERT INTO userinfo (name, username, password, watergoal) VALUES ('${userdata.name}', '${userdata.username}', '${userdata.password}', '${userdata.watergoal}');`;
+        const new_update = `INSERT INTO Logs (user, message, time) VALUES ('${username}', ' created new account', '$now.ISOString()}');`;
+        db.exec(new_update);  
+        db.exec(new)
+        res.render('new_user_acc');
+    }
+    else{
+	res.render('account_exists');
+    } 
+	
 }) 
-
-
