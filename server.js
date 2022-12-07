@@ -12,7 +12,7 @@ try{
     db.exec(UserTable);
 }catch (error){
 }
-
+//Create logs db
  
 //Initialize app
 const app = express();
@@ -43,14 +43,22 @@ app.get ('/', (req, res) => {
 app.post("/login", function(req, res){
     const username = req.body.username;
     const password = req.body.password;
-
+    const time = Date.now();
+    const now = new Date(time); 
     const check = dp.prepare(`SELECT * FROM userinfo WHERE Username =' ${username}' and password='${pass}';`);
     let x = check.get();
     if(row === undefined){
-	console.log("USER DOES NOT EXIST")
+	const unsuccessful = `INSERT INTO Logs (user, message, time ) VALUES ('${usernmae}', 'unsuccessful login', '${today.toISOString()}');`;
+	db.exec(unsucessful);
+        res.render('invalid-login');
     }else{
-	req. 
-} 
+        const success = `INSERT INTO Logs (user, message, time) VALUES ('${username}', 'success!', ${today.toISOString()}');`; 
+        db.exec(success)
+        res.render('home');  	
+
+}
+});
+ 
 
 // Creating a new account
 app.post('/new', (req, res, next) => {
@@ -63,31 +71,9 @@ app.post('/new', (req, res, next) => {
      const stmt = dp.prepare('INSERT INTO userinfo (name, username, password, watergoal) VALUES (?, ?, ?, ?)');
    // FIGURE OUT HOW TO USE BCRYPT  
      const info = stmt.run(userdata.name, userdata.username, userdata.password, userdata.watergoal);
-     res.status(200).json({'message": "user " + userdata.username " + " " created"})
+     res.status(200).json({'message": "user " + userdata.username " +  " created"})
      console.log(userdata)
      console.log(info) 
 }) 
 
 
-app.get('/app/user/info/:username/', req, res, next) => {
-    const stmt = dp.prepare('SELECT * FROM userinfo WHERE username = ?' )
-    const info = stmt.get(req.params.username)
-    res.status(200).json(info)
-    console.log(info)
-
-//Modify user info endpoint
-app.patch('/app/user/info/update/:username/', (req, res,next) => {
-    let userdata = {
-	name: req.body.name,
-	username: req.params.username,
-	password: req.body.password ? bcrypt(req.body.password): NULL
-	watergoal: req.body.watergoal
-    }
-    const stmt = dp.prepare('UPDATE userinfo SET name = COALESCE(?,name), username = COALESCE(?,username), password = COALESCE(?,pasword), watergoal = COALESCE(?, watergoal);')
-
-    const info = stmt.run(userdata.name, userdata.username, username.password, username.watergoal);
-    res.status(202).json({"message" : info.changes + " record updated: ID " + info.lastInsertRowid+"username: userdata.username"})
-    console.log(userdata)
-    console.log(info) 
-})
- 
