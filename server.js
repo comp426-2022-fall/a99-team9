@@ -20,7 +20,7 @@ const app = express()
 const args = minimist(process.argv.slice(2));
 const saltRounds = 12;
  
-const port = args.port || 4000  
+const port = args.port || 2000  
 //set up 
 const __file = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__file);
