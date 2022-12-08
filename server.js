@@ -1,7 +1,8 @@
 import minimist from 'minimist';
 import express from 'express';
 import Database from 'better-sqlite3';
-
+import {fileURLToPath} from 'url';
+import path from 'path';
 
 //Initialize database
 const db = new Database('userinfo.db');
@@ -21,21 +22,24 @@ const bcrypt = require('bcrypt')
 const saltRounds = 12;
  
 const port = args.port || 2000  
-//app.use
+//set up 
+const __file = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__file);
 app.use(express.static("frontend"))
 app.set("view engine", "ejs") 
+app.set('frontend', path.join(__dirname, 'frontend')); 
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
-// Route to homepage
+// Route to login
 app.get('/', (req, res) => {
-    res.redirect('/home')
+    res.redirect('/login')
 });
 
-// Route to login
-app.get ('/', (req, res) => {
-    res.redirect('/login');
+app.get ('/login', (req, res) => {
+    res.redirect('login');
 });
 
 
