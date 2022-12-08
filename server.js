@@ -111,6 +111,7 @@ app.post('/new_user', (req, res) =>{
         password: req.body.password,
         watergoal: req.body.watergoal
     }
+    const username = req.body.username;
     const time = Date.now();
     const now = new Date(time);
     const stmt6 = `INSERT INTO Logs (username, message, time) VALUES ('${username}', ' created new account', '$now.ISOString()}');`;
