@@ -5,3 +5,11 @@
 
 ### Resetting the water amount at the end of day
 - Your daily goal resets at midnight your local time instead of accumulating
+
+### Calendar 
+- A calendar where the day will turn blue once you complete your water goal for that day
+
+### Adding friends
+- A feature where you can find other users and send motivating messages to your 'friends' and see their water goal
+
+
