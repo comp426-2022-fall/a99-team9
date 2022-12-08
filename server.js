@@ -67,11 +67,15 @@ app.post('/loginpage', function(req, res){
     const check = db.prepare(`SELECT * FROM userinfo WHERE username =' ${username}' and password='${password}';`);
     let x = check.get();
     if(x === undefined){
+        req.app.set('username', username);
+        req.app.set('password', pasword); 
         const unsuccessful = `INSERT INTO Logs (username, message, time ) VALUES ('${username}', 'unsuccessful login', '${now.toISOString()}');`;
         db.exec(unsuccessful);
         res.render('invalid_login');
     }
     else{ 
+        req.app.set('username', username); 
+        req.app.set('password', password); 
         const success = `INSERT INTO Logs (username, message, time) VALUES ('${username}', 'success!', ${now.toISOString()}');`; 
         db.exec(success)
         res.render('home');  	
@@ -156,7 +160,15 @@ app.post('/new_entry', (req, res) => {
 app.use((req, res) => {
     res.status(404).send('404 NOT FOUND');
   });
-
+app.get('/watergoal', function(req, res){
+    const stmt7 = db.prepare(`SELECT * FROM userinfo (watergoal) VALUES ('${watergoal}');`;
+    let watergoal = stmt7.all();
+    if(all === undefined) {
+	res.send("no data found");
+    } 
+    else {
+        res.send(watergoal);
+    } 
 
 app.listen(port) 
 
