@@ -17,7 +17,7 @@ Take a look at our demo video here! In our demo, we focus on the ___.
       
       3.    Run npm start .
       
-      4.    On your browser, navigate to the webpage localhost:4000/.
+      4.    On your browser, navigate to the webpage localhost:2000/.
       
       5.    CONTROL+C will close the server when you are finished
       
