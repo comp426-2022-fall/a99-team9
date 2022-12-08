@@ -8,6 +8,7 @@ import path from 'path';
 const db = new Database('userinfo.db');
 db.pragma('journal_mode = WAL'); 
 
+
 const UserTable = `CREATE TABLE userinfo (id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCGHAR(50), username VARCHAR(50), password VARCHAR(50), watergoal INTEGER, WaterDrank INTEGER);`
 try{
     db.exec(UserTable);
@@ -54,13 +55,16 @@ app.get ('/loginpage', function (req, res) {
 app.get('/new_user', (req, res, next) => {
     res.render('new_user');	
 }); 
+//Route to homepage
+app.get('/home', function(req, res){
+    res.render('home'); 
+});
 
-// Route to home page upon logging in
-app.get('/home', (req, res, next) => {
-    res.render('home');	
+//Route to invalid login
+app.get('/invalid_login', function(req, res){
+    res.render('invalid_login')
 }); 
-
-
+ 
 // User Login
 app.post('/loginpage', function(req, res){
     const username = req.body.username;
@@ -73,15 +77,15 @@ app.post('/loginpage', function(req, res){
     if(x === undefined){
         const unsuccessful = `INSERT INTO Logs (username, message, time ) VALUES ('${username}', 'unsuccessful login', '${now.toISOString()}');`;
         db.exec(unsucessful);
-        res.render('invalid_login');
-    }else{
+        res.redirect('/invalid_login');
+    }
+    else{
         const success = `INSERT INTO Logs (username, message, time) VALUES ('${username}', 'success!', ${now.toISOString()}');`; 
         db.exec(success)
-        res.render('home');  	
+        res.redirect('/home');  	
 
     }
-});
-
+}); 
 // Delete an account
 app.post('/delete_acc', function(req, res){
     const time = Date.now();
