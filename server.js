@@ -16,16 +16,16 @@ try{
 //Create logs db
  
 //Initialize app
-const app = express();
+const app = express()
 const args = minimist(process.argv.slice(2));
 const saltRounds = 12;
  
-const port = args.port || 2000  
+const port = args.port || 4000  
 //set up 
 const __file = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__file);
 app.use(express.static("frontend"))
-app.set("view engine", "ejs") 
+app.set('view engine', 'ejs') 
 app.set('frontend', path.join(__dirname, 'frontend')); 
 
 app.use(express.json());
