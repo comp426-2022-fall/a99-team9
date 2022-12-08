@@ -12,4 +12,5 @@
 ### Adding friends
 - A feature where you can find other users and send motivating messages to your 'friends' and see their water goal
 
-
+### Encrypting passwords
+- We would like to encrypt passwords using bcrypt
