@@ -16,12 +16,13 @@ try{
 //Create logs db
  
 //Initialize app
+const args = minimist(process.argv.slice(2));
+
 const port = args.port || 2000
 
 const __file = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__file); 
 const app = express()
-const args = minimist(process.argv.slice(2));
  
 //set up 
 app.use(express.static("frontend"))
