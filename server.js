@@ -91,7 +91,7 @@ app.post('/delete_acc', function(req, res){
  
 
 // Creating a new account
-app.post('/new', (req, res, next) => {
+app.post('/new_user', (req, res, next) => {
     let userdata = {
 	name: req.body.name,
 	username: req.body.username,
@@ -107,7 +107,7 @@ app.post('/new', (req, res, next) => {
         const new_update = `INSERT INTO Logs (username, message, time) VALUES ('${username}', ' created new account', '$now.ISOString()}');`;
         db.exec(new_update);  
         db.exec(newup)
-        res.render('new_user_acc');
+        res.render('new_user');
     }
     else{
 	res.render('account_exists');
@@ -119,13 +119,13 @@ app.post('/new', (req, res, next) => {
 app.post('/new_entry', (req, res) => {
     const time = Date.now();
     const now = new Date(time);
-    let user1 = req.app.get('Username');
+    let user1 = req.app.get('username');
 
 
     const stmt2 =  `INSERT INTO Logs (user, message, time) VALUES ('${username}', ' submitted new entry ', '$now.ISOString()}');`;
     db.exec(stmt2);  
 
-    const username = req.app.get('Username');
+    const username = req.app.get('username');
     const amount = req.body.WaterDrank; //might need to create a global bariable to add to or create one that when clicked we add to but dont know how to do this yet
     const date = req.body.date;
 
