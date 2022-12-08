@@ -1,4 +1,4 @@
-import minimist from 'minimist';
+import minimist from 'minimist'; 
 import express from 'express';
 import Database from 'better-sqlite3';
 import {fileURLToPath} from 'url';
@@ -8,7 +8,7 @@ import path from 'path';
 const db = new Database('userinfo.db');
 db.pragma('journal_mode = WAL'); 
 
-const UserTable = `CREATE TABLE userinfo (id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCGHAR(50), Username VARCHAR(50), Password VARCHAR(50), WaterGoal INTEGER, WaterDrank INTEGER);`
+const UserTable = `CREATE TABLE userinfo (id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCGHAR(50), username VARCHAR(50), password VARCHAR(50), watergoal INTEGER, WaterDrank INTEGER);`
 try{
     db.exec(UserTable);
 }catch (error){
@@ -29,9 +29,9 @@ const __dirname = path.dirname(__file);
 const app = express();
  
 //set up 
-app.use(express.static("views"))
+app.use(express.static("frontend"))
 app.set('view engine', 'ejs') 
-app.set('frontend', path.join(__dirname, 'frontend')); 
+app.set('views', path.join(__dirname, 'views')); 
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -59,10 +59,14 @@ app.post('/loginpage', function(req, res){
     const time = Date.now();
     const now = new Date(time); 
 <<<<<<< HEAD
+<<<<<<< HEAD
     const check = db.prepare(`SELECT * FROM userinfo WHERE Username =' ${username}' and Password='${pass}';`);
 =======
     const check = db.prepare(`SELECT * FROM userinfo WHERE Username =' ${username}' and password='${password}';`);
 >>>>>>> 30662897385c3cc93ed3d1510ccda34ee9f96562
+=======
+    const check = db.prepare(`SELECT * FROM userinfo WHERE username =' ${username}' and password='${password}';`);
+>>>>>>> 645da5741d2c8058de624d4fae6836c1956637bd
     let x = check.get();
     if(x === undefined){
 	const unsuccessful = `INSERT INTO Logs (username, message, time ) VALUES ('${username}', 'unsuccessful login', '${now.toISOString()}');`;
@@ -82,12 +86,12 @@ app.post('/delete_acc', function(req, res){
     const now = new Date(time); 
     let user1 = req.body.username
     
-    const stmt3= `INSERT INTO Logs (user, message, time) VALUES ('${username}', ' deleted account', '$now.ISOString()}');`;
+    const stmt3= `INSERT INTO Logs (username, message, time) VALUES ('${username}', ' deleted account', '$now.ISOString()}');`;
     db.exec(stmt3)
 
     const usernam = req.body.username;
     const pass = req.body.password;
-    const stmt4 = `DELETE FROM userinfo WHERE Username =' ${usernam}';`
+    const stmt4 = `DELETE FROM userinfo WHERE username =' ${username}';`
     db.exec(stmt4)
     res.render('account_deleted');
 });
@@ -106,8 +110,13 @@ app.post('/new', (req, res, next) => {
     const stmt1 = db.prepare(`SELECT * FROM userinfo WHERE Username =' ${username}';`);
     let y = stmt1.get();
     if(y == undefined){
+<<<<<<< HEAD
 	const newup = `INSERT INTO userinfo (Name, Username, Password, WaterGoal, WaterDrank) VALUES ('${userdata.name}', '${userdata.username}', '${userdata.password}', '${userdata.watergoal}', 0);`;
         const new_update = `INSERT INTO Logs (user, message, time) VALUES ('${username}', ' created new account', '$now.ISOString()}');`;
+=======
+	const newup = `INSERT INTO userinfo (name, username, password, watergoal) VALUES ('${userdata.name}', '${userdata.username}', '${userdata.password}', '${userdata.watergoal}');`;
+        const new_update = `INSERT INTO Logs (username, message, time) VALUES ('${username}', ' created new account', '$now.ISOString()}');`;
+>>>>>>> 645da5741d2c8058de624d4fae6836c1956637bd
         db.exec(new_update);  
         db.exec(newup)
         res.render('new_user_acc');
