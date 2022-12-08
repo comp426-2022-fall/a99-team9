@@ -16,14 +16,14 @@ try{
 //Create logs db
  
 //Initialize app
+const port = args.port || 2000
+
+const __file = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__file); 
 const app = express()
 const args = minimist(process.argv.slice(2));
-const saltRounds = 12;
  
-const port = args.port || 2000  
 //set up 
-const __file = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__file);
 app.use(express.static("frontend"))
 app.set('view engine', 'ejs') 
 app.set('frontend', path.join(__dirname, 'frontend')); 
@@ -34,12 +34,15 @@ app.use(express.urlencoded({ extended: true }));
 
 // Route to login
 app.get('/', function (req, res) {
-    res.redirect('/login')
+    res.redirect('/loginpage')
 });
 
 app.get ('/login', function (req, res) {
     res.render('login');
 });
+app.get ('/app', function (req, res) {
+    res.redirect('/loginpage');
+});  
 
 
 // User Login
