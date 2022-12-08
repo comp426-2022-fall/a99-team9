@@ -18,7 +18,6 @@ try{
 //Initialize app
 const app = express();
 const args = minimist(process.argv.slice(2));
-const bcrypt = require('bcrypt')
 const saltRounds = 12;
  
 const port = args.port || 2000  
@@ -103,7 +102,7 @@ app.post('/new', (req, res, next) => {
 	res.render('account_exists');
     } 
 	
-}) 
+}); 
 
 // Creating a new entry
 app.post('/new', (req, res) => {
@@ -124,4 +123,9 @@ app.post('/new', (req, res) => {
 
 	res.render('entry_created');
 	
-}) 
+});
+
+// Will return '404 NOT FOUND' for undefined endpoints
+app.use((req, res) => {
+    res.status(404).send('404 NOT FOUND');
+  });
