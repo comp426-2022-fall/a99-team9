@@ -48,7 +48,7 @@ app.get ('/app', function (req, res) {
 
 
 // User Login
-app.post("/login", function(req, res){
+app.post('/loginpage', function(req, res){
     const username = req.body.username;
     const password = req.body.password;
     const time = Date.now();
