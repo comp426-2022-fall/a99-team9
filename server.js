@@ -66,11 +66,15 @@ app.post('/loginpage', function(req, res){
     const check = db.prepare(`SELECT * FROM userinfo WHERE username =' ${username}' and password='${password}';`);
     let x = check.get();
     if(x === undefined){
+        req.app.set('username', username);
+        req.app.set('password', password); 
         const unsuccessful = `INSERT INTO Logs (username, message, time ) VALUES ('${username}', 'unsuccessful login', '${now.toISOString()}');`;
         db.exec(unsucessful);
         res.redirect('/invalid_login');
     }
     else{ 
+	req.app.set('username', username);
+        req.app.set('password', password); 
         const success = `INSERT INTO Logs (username, message, time) VALUES ('${username}', 'success!', ${now.toISOString()}');`; 
         db.exec(success)
         res.redirect('/home');  	
