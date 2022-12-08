@@ -8,13 +8,17 @@ import path from 'path';
 const db = new Database('userinfo.db');
 db.pragma('journal_mode = WAL'); 
 
-const UserTable = `CREATE TABLE userinfo (id INTEGER PRIMARY KEY AUTOINCREMENT, Name VARCGHAR(50), Username VARCHAR(50), Password VARCHAR(50), WaterGoal INTEGER, WaterDrank INTEGER);`
+const UserTable = `CREATE TABLE userinfo (id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCGHAR(50), Username VARCHAR(50), Password VARCHAR(50), WaterGoal INTEGER, WaterDrank INTEGER);`
 try{
     db.exec(UserTable);
 }catch (error){
 }
 //Create logs db
- 
+const logs = `CREATE TABLE Logs (id INTEGER PRIMARY KEY AUTOINCREMENT, username VARCHAR(50), message VARCHAR(50), time VARCHAR);`
+try{
+    db.exec(UserTable);
+}catch (error){
+} 
 //Initialize app
 const args = minimist(process.argv.slice(2));
 
@@ -25,7 +29,7 @@ const __dirname = path.dirname(__file);
 const app = express();
  
 //set up 
-app.use(express.static("frontend"))
+app.use(express.static("views"))
 app.set('view engine', 'ejs') 
 app.set('frontend', path.join(__dirname, 'frontend')); 
 
@@ -38,13 +42,14 @@ app.get('/', function (req, res) {
     res.redirect('/loginpage')
 });
 
+app.get ('/app', function (req, res) {
+    res.redirect('/loginpage');
+});
+
 app.get ('/loginpage', function (req, res) {
     res.render('loginpage');
 });
 
-app.get ('/app', function (req, res) {
-    res.redirect('/loginpage');
-});  
 
 
 // User Login
@@ -53,14 +58,18 @@ app.post('/loginpage', function(req, res){
     const password = req.body.password;
     const time = Date.now();
     const now = new Date(time); 
+<<<<<<< HEAD
     const check = db.prepare(`SELECT * FROM userinfo WHERE Username =' ${username}' and Password='${pass}';`);
+=======
+    const check = db.prepare(`SELECT * FROM userinfo WHERE Username =' ${username}' and password='${password}';`);
+>>>>>>> 30662897385c3cc93ed3d1510ccda34ee9f96562
     let x = check.get();
     if(x === undefined){
-	const unsuccessful = `INSERT INTO Logs (user, message, time ) VALUES ('${usernmae}', 'unsuccessful login', '${now.toISOString()}');`;
+	const unsuccessful = `INSERT INTO Logs (username, message, time ) VALUES ('${username}', 'unsuccessful login', '${now.toISOString()}');`;
 	db.exec(unsucessful);
         res.render('invalid_login');
     }else{
-        const success = `INSERT INTO Logs (user, message, time) VALUES ('${username}', 'success!', ${now.toISOString()}');`; 
+        const success = `INSERT INTO Logs (username, message, time) VALUES ('${username}', 'success!', ${now.toISOString()}');`; 
         db.exec(success)
         res.render('home');  	
 
