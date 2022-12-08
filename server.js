@@ -114,7 +114,7 @@ app.post('/new_user', (req, res) =>{
     const username = req.body.username;
     const time = Date.now();
     const now = new Date(time);
-    const stmt6 = `INSERT INTO Logs (username, message, time) VALUES ('${username}', ' created new account', '$now.ISOString()}');`;
+    const stmt6 =`INSERT INTO Logs (username, message, time ) VALUES ('${username}', ' creating a new account ', '${now.toISOString()}');`;
     db.exec(stmt6);  
 
     const stmt1 = db.prepare(`SELECT * FROM userinfo WHERE username =' ${username}';`);
