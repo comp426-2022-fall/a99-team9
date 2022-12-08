@@ -10,7 +10,7 @@ const db = new Database('userinfo.db');
 db.pragma('journal_mode = WAL'); 
 
 
-const UserTable = `CREATE TABLE userinfo (id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCGHAR(50), username VARCHAR(50), password VARCHAR(50), watergoal INTEGER, WaterDrank INTEGER);`
+const UserTable = `CREATE TABLE userinfo (id INTEGER PRIMARY KEY AUTOINCREMENT, name VARCHAR(50), username VARCHAR(50), password VARCHAR(50), watergoal INTEGER, WaterDrank INTEGER);`
 try{
     db.exec(UserTable);
 }catch (error){
@@ -101,9 +101,9 @@ app.post('/delete_acc', function(req, res){
     const stmt3= `INSERT INTO Logs (username, message, time) VALUES ('${user1}', ' deleted account', '$now.ISOString()}');`;
     db.exec(stmt3)
 
-    const usernam = req.body.username;
+    const username = req.body.username;
     const pass = req.body.password;
-    const stmt4 = `DELETE FROM userinfo WHERE username =' ${usernam}';`
+    const stmt4 = `DELETE FROM userinfo WHERE username =' ${username}';`
     db.exec(stmt4)
     res.render('account_deleted');
 });
