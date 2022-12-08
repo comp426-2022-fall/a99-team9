@@ -98,12 +98,12 @@ app.post('/delete_acc', function(req, res){
     const now = new Date(time); 
     let user1 = req.body.username
     
-    const stmt3= `INSERT INTO Logs (username, message, time) VALUES ('${username}', ' deleted account', '$now.ISOString()}');`;
+    const stmt3= `INSERT INTO Logs (username, message, time) VALUES ('${user1}', ' deleted account', '$now.ISOString()}');`;
     db.exec(stmt3)
 
     const usernam = req.body.username;
     const pass = req.body.password;
-    const stmt4 = `DELETE FROM userinfo WHERE username =' ${username}';`
+    const stmt4 = `DELETE FROM userinfo WHERE username =' ${usernam}';`
     db.exec(stmt4)
     res.render('account_deleted');
 });
@@ -163,7 +163,7 @@ app.use((req, res) => {
     res.status(404).send('404 NOT FOUND');
   });
 app.get('/watergoal', function(req, res){
-    const stmt7 = db.prepare(`SELECT * FROM userinfo (watergoal) VALUES ('${watergoal}');`;
+    const stmt7 = db.prepare(`SELECT * FROM userinfo (watergoal) VALUES '${watergoal}';`);
     let watergoal = stmt7.all();
     if(all === undefined) {
 	res.send("no data found");
@@ -171,6 +171,7 @@ app.get('/watergoal', function(req, res){
     else {
         res.send(watergoal);
     } 
+});
 
 app.listen(port) 
 
