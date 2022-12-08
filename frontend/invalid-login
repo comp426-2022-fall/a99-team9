@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Account Invalid</title>
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body class="text-box">
+        <h1>Your account is invalid!</h1>
+    </body>
+</html>
