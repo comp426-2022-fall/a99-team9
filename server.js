@@ -58,7 +58,7 @@ app.post('/loginpage', function(req, res){
     if(x === undefined){
 	const unsuccessful = `INSERT INTO Logs (user, message, time ) VALUES ('${usernmae}', 'unsuccessful login', '${now.toISOString()}');`;
 	db.exec(unsucessful);
-        res.render('invalid-login');
+        res.render('invalid_login');
     }else{
         const success = `INSERT INTO Logs (user, message, time) VALUES ('${username}', 'success!', ${now.toISOString()}');`; 
         db.exec(success)
