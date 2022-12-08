@@ -137,17 +137,19 @@ app.post('/new_entry', (req, res) => {
     let user1 = req.app.get('username');
 
 
-    const stmt2 =  `INSERT INTO Logs (user, message, time) VALUES ('${username}', ' submitted new entry ', '$now.ISOString()}');`;
+
+    const stmt2 =  `INSERT INTO Logs (username, message, time) VALUES ('${user1}', ' submitted new entry ', '$now.ISOString()}');`;
     db.exec(stmt2);  
 
     const username = req.app.get('username');
+    const watergoal = req.app.watergoal;
     const amount = req.body.WaterDrank; //might need to create a global variable to add to or create one that when clicked we add to but dont know how to do this yet
     const date = req.body.date;
 
-    const stmt5 = `INSERT INTO userinfo (name, username, password, watergoal, WaterDrank) VALUES ('${username}', '${amount}', '${date}', '${amount}');`;
+    const stmt5 = `INSERT INTO userinfo (name, username, password, watergoal, WaterDrank) VALUES ('${username}', '${amount}', '${date}', '${watergoal}', '${amount}');`;
     db.exec(stmt5);  
 
-	res.render('entry_created');
+	res.render('home');
 	
 });
 
