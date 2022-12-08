@@ -68,12 +68,12 @@ app.post('/loginpage', function(req, res){
     if(x === undefined){
         const unsuccessful = `INSERT INTO Logs (username, message, time ) VALUES ('${username}', 'unsuccessful login', '${now.toISOString()}');`;
         db.exec(unsuccessful);
-        res.redirect('/invalid_login');
+        res.render('invalid_login');
     }
     else{ 
         const success = `INSERT INTO Logs (username, message, time) VALUES ('${username}', 'success!', ${now.toISOString()}');`; 
         db.exec(success)
-        res.redirect('/home');  	
+        res.render('home');  	
     }
 });
 
