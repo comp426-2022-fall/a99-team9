@@ -127,7 +127,6 @@ app.post('/new_user', (req, res) =>{
     else{
         res.render('account_exists');
     } 
-	
 }); 
 
 // Creating a new entry
