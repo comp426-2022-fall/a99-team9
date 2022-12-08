@@ -41,6 +41,7 @@ app.get('/', function (req, res) {
 app.get ('/login', function (req, res) {
     res.render('login');
 });
+
 app.get ('/app', function (req, res) {
     res.redirect('/loginpage');
 });  
@@ -109,7 +110,7 @@ app.post('/new', (req, res, next) => {
 }); 
 
 // Creating a new entry
-app.post('/new', (req, res) => {
+app.post('/new_entry', (req, res) => {
     const time = Date.now();
     const now = new Date(time);
     let user1 = req.app.get('Username');
