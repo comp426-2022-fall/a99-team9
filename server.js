@@ -67,7 +67,7 @@ app.post('/loginpage', function(req, res){
     let x = check.get();
     if(x === undefined){
         const unsuccessful = `INSERT INTO Logs (username, message, time ) VALUES ('${username}', 'unsuccessful login', '${now.toISOString()}');`;
-        db.exec(unsucessful);
+        db.exec(unsuccessful);
         res.redirect('/invalid_login');
     }
     else{ 
@@ -76,6 +76,7 @@ app.post('/loginpage', function(req, res){
         res.redirect('/home');  	
     }
 });
+
 //Route to homepage
 app.get('/home', function(req, res){
     res.render('home');
