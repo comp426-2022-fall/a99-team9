@@ -38,8 +38,8 @@ app.get('/', function (req, res) {
     res.redirect('/loginpage')
 });
 
-app.get ('/login', function (req, res) {
-    res.render('login');
+app.get ('/loginpage', function (req, res) {
+    res.render('loginpage');
 });
 
 app.get ('/app', function (req, res) {
