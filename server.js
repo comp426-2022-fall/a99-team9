@@ -50,6 +50,14 @@ app.get ('/loginpage', function (req, res) {
     res.render('loginpage');
 });
 
+// Route to new account page
+app.get('/new_user', (req, res, next) => {
+    res.render('new_user');	
+}); 
+
+app.get('/home', (req, res, next) => {
+    res.render('home');	
+}); 
 
 
 // User Login
