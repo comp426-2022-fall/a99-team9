@@ -55,6 +55,7 @@ app.get('/new_user', (req, res, next) => {
     res.render('new_user');	
 }); 
 
+// Route to home page upon logging in
 app.get('/home', (req, res, next) => {
     res.render('home');	
 }); 
@@ -149,7 +150,6 @@ app.post('/new_entry', (req, res) => {
 app.use((req, res) => {
     res.status(404).send('404 NOT FOUND');
   });
-
 
 
 app.listen(port) 
