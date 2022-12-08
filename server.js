@@ -70,8 +70,8 @@ app.post('/loginpage', function(req, res){
     const check = db.prepare(`SELECT * FROM userinfo WHERE username =' ${username}' and password='${password}';`);
     let x = check.get();
     if(x === undefined){
-	const unsuccessful = `INSERT INTO Logs (username, message, time ) VALUES ('${username}', 'unsuccessful login', '${now.toISOString()}');`;
-	db.exec(unsucessful);
+        const unsuccessful = `INSERT INTO Logs (username, message, time ) VALUES ('${username}', 'unsuccessful login', '${now.toISOString()}');`;
+        db.exec(unsucessful);
         res.render('invalid_login');
     }else{
         const success = `INSERT INTO Logs (username, message, time) VALUES ('${username}', 'success!', ${now.toISOString()}');`; 
@@ -99,26 +99,27 @@ app.post('/delete_acc', function(req, res){
  
 
 // Creating a new account
-app.post('/new_user', (req, res, next) => {
+app.post('/new_user', (req, res) =>{
     let userdata = {
-	name: req.body.name,
-	username: req.body.username,
-	password: req.body.password,
-	watergoal: req.body.watergoal
+        name: req.body.name, 
+        username: req.body.username,
+        password: req.body.password,
+        watergoal: req.body.watergoal
     }
     const time = Date.now();
     const now = new Date(time);
-    const stmt1 = db.prepare(`SELECT * FROM userinfo WHERE Username =' ${username}';`);
+    const stmt6 = `INSERT INTO Logs (username, message, time) VALUES ('${username}', ' created new account', '$now.ISOString()}');`;
+    db.exec(stmt6);  
+
+    const stmt1 = db.prepare(`SELECT * FROM userinfo WHERE username =' ${username}';`);
     let y = stmt1.get();
     if(y == undefined){
-	const newup = `INSERT INTO userinfo (name, username, password, watergoal, WaterDrank) VALUES ('${userdata.name}', '${userdata.username}', '${userdata.password}', '${userdata.watergoal}', 0);`;
-        const new_update = `INSERT INTO Logs (username, message, time) VALUES ('${username}', ' created new account', '$now.ISOString()}');`;
-        db.exec(new_update);  
+        const newup = `INSERT INTO userinfo (name, username, password, watergoal, WaterDrank) VALUES ('${userdata.name}', '${userdata.username}', '${userdata.password}', '${userdata.watergoal}', 0);`;
         db.exec(newup)
         res.render('new_user');
     }
     else{
-	res.render('account_exists');
+        res.render('account_exists');
     } 
 	
 }); 
@@ -134,7 +135,7 @@ app.post('/new_entry', (req, res) => {
     db.exec(stmt2);  
 
     const username = req.app.get('username');
-    const amount = req.body.WaterDrank; //might need to create a global bariable to add to or create one that when clicked we add to but dont know how to do this yet
+    const amount = req.body.WaterDrank; //might need to create a global variable to add to or create one that when clicked we add to but dont know how to do this yet
     const date = req.body.date;
 
     const stmt5 = `INSERT INTO userinfo (name, username, password, watergoal, WaterDrank) VALUES ('${username}', '${amount}', '${date}', '${amount}');`;
