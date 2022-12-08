@@ -17,7 +17,7 @@ try{
 //Create logs db
 const logs = `CREATE TABLE Logs (id INTEGER PRIMARY KEY AUTOINCREMENT, username VARCHAR(50), message VARCHAR(50), time VARCHAR);`
 try{
-    db.exec(UserTable);
+    db.exec(logs);
 }catch (error){
 } 
 //Initialize app
@@ -55,16 +55,7 @@ app.get ('/loginpage', function (req, res) {
 app.get('/new_user', (req, res, next) => {
     res.render('new_user');	
 }); 
-//Route to homepage
-app.get('/home', function(req, res){
-    res.render('home'); 
-});
 
-//Route to invalid login
-app.get('/invalid_login', function(req, res){
-    res.render('invalid_login')
-}); 
- 
 // User Login
 app.post('/loginpage', function(req, res){
     const username = req.body.username;
@@ -79,13 +70,22 @@ app.post('/loginpage', function(req, res){
         db.exec(unsucessful);
         res.redirect('/invalid_login');
     }
-    else{
+    else{ 
         const success = `INSERT INTO Logs (username, message, time) VALUES ('${username}', 'success!', ${now.toISOString()}');`; 
         db.exec(success)
         res.redirect('/home');  	
-
     }
+});
+//Route to homepage
+app.get('/home', function(req, res){
+    res.render('home');
+});
+
+//Route to invalid login
+app.get('/invalid_login', function(req, res){
+    res.render('invalid_login')
 }); 
+ 
 // Delete an account
 app.post('/delete_acc', function(req, res){
     const time = Date.now();
