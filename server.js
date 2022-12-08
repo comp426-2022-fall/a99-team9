@@ -48,7 +48,7 @@ app.post("/login", function(req, res){
     const password = req.body.password;
     const time = Date.now();
     const now = new Date(time); 
-    const check = dp.prepare(`SELECT * FROM userinfo WHERE Username =' ${username}' and password='${pass}';`);
+    const check = db.prepare(`SELECT * FROM userinfo WHERE Username =' ${username}' and password='${pass}';`);
     let x = check.get();
     if(x === undefined){
 	const unsuccessful = `INSERT INTO Logs (user, message, time ) VALUES ('${usernmae}', 'unsuccessful login', '${now.toISOString()}');`;
@@ -129,3 +129,7 @@ app.post('/new', (req, res) => {
 app.use((req, res) => {
     res.status(404).send('404 NOT FOUND');
   });
+
+
+
+app.listen(port) 
