@@ -22,9 +22,8 @@
             <label for="WaterDrank"><b>Water Drank Today: </b></label>  
             <input type = "text" placeholder="Enter water (oz)" name="WaterDrank" id ="WaterDrank">
           </p>
-          <%data.forEach(function(dat) {%>
-            Water Goal: <%= dat.watergoal %></p>
-            <%});%>
+      	  <p>
+	    <label for="watergoal"><b>Water Goal: <%= userinfo.wgoal %></b> </label>
         </form>
         <form method="post" action="/new_entry">
           <input type = "submit" value="Add to total">
