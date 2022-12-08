@@ -22,7 +22,7 @@ const port = args.port || 2000
 
 const __file = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__file); 
-const app = express()
+const app = express();
  
 //set up 
 app.use(express.static("frontend"))
