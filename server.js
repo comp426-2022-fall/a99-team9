@@ -17,7 +17,7 @@ try{
 //Create logs db
 const logs = `CREATE TABLE Logs (id INTEGER PRIMARY KEY AUTOINCREMENT, username VARCHAR(50), message VARCHAR(50), time VARCHAR);`
 try{
-    db.exec(UserTable);
+    db.exec(logs);
 }catch (error){
 } 
 //Initialize app
