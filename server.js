@@ -80,7 +80,7 @@ app.post('/delete_acc', function(req, res){
     const pass = req.body.password;
     const stmt4 = `DELETE FROM userinfo WHERE Username =' ${usernam}';`
     db.exec(stmt4)
-    res.render('account_delted');
+    res.render('account_deleted');
 });
  
 
