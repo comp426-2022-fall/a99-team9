@@ -251,3 +251,16 @@ Given the current state of the web app, the future extensions of the project inv
 		Given all the data that is collected, a weekly trends chart would be a helpful tool to see which days 
 		were the water goals met, how often are the water goals met, and which days were the most amount of 
 		water consumed. 
+		
+	5. Water icon to add water count
+		Instead of entering an amount of water each day, a user can add a standard size with a button that
+		is a water icon. When you click on the icon (which may be a water droplet, cup, or bottle) it will
+		add 8-16 oz of water to your daily total.
+		
+	6. Adding friends
+		A fun feature can be added where users can find other users or add their friends. With this feature
+		users can send motivating messages to their friends to encourage them to meet their water goal.
+		
+	7. Encrypting passwords
+		We want to establish a more secure way to store the user account informaton and hopefully encrypt
+		it with a feature such as bcrypt. 
