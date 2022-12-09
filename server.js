@@ -84,7 +84,7 @@ app.post('/loginpage', function(req, res){
 
 //Route to homepage
 app.get('/home', function(req, res){
-    const datastmt = db.prepare(`SELECT watergoal FROM userinfo WHERE username = '${req.app.get('username')}';`);
+    const datastmt = db.prepare(`SELECT * FROM userinfo WHERE username = '${req.app.get('username')}';`);
     let wgoal = datastmt.all();
     res.render('home', {'userinfo' : wgoal});
 });
