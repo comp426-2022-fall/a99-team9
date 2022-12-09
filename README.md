@@ -2,7 +2,7 @@
 
 
 ## Summary:
-Dam Journal is a water tracker that allow users to keep track of how much water they drank throughout the day so that they can achieve their water consumption goals. Users will create an account where they can add how many fluid ounces they just drank. They can also see how much water they drank throughout the day along with how much water they drank in any previous day. We hope to promote drinking water because it is refreshing, delicious, and has health benefits. 
+Dam Journal is a water tracker that allow users to keep track of how much water they drank throughout the day so that they can achieve their water consumption goals. Users will create an account where they can add how many fluid ounces they just drank. They can also see how much water they drank throughout the day and their water consumption progess. We hope to promote drinking water because it is refreshing, delicious, and has health benefits. 
 
 
 ## Demo:
