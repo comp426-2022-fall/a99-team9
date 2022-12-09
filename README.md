@@ -6,7 +6,7 @@ Dam Journal is a water tracker that allow users to keep track of how much water 
 
 
 ## Demo:
-Take a look at our demo video here! In our demo, we focus on the ___.
+Take a look at our demo video here: https://youtu.be/qjkcnZ-hUoc
 
 
 ## Stepup Instructions:
