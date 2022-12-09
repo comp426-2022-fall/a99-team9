@@ -22,9 +22,12 @@
             <label for="WaterDrank"><b>Water Drank Today: </b></label>  
             <input type = "text" placeholder="Enter water (oz)" name="WaterDrank" id ="WaterDrank">
           </p>
+	  <p>
 	  <%userinfo.forEach(function(data) {%>
-      	  <p>
-	    <b>Water Goal: <%= data.watergoal %></b>
+	    <tr>
+	    	  <td><%= data.watergoal %> </td>
+	    </tr>
+	    /*<b>Water Goal: <%= data.watergoal %></b>*/
 	  </p>
 	  <%});%>
         </form>
